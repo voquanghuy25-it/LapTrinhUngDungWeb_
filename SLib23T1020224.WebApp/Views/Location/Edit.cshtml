@@ -1,0 +1,55 @@
+﻿@model SLib23T1020224.Models.Entities.Location
+
+@{
+    ViewData["Title"] = "Chỉnh sửa vị trí lưu trữ";
+}
+
+<h1>Chỉnh sửa vị trí lưu trữ</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <input type="hidden" asp-for="LocationId" />
+
+            <div class="mb-3">
+                <label asp-for="LocationCode" class="form-label">Mã vị trí</label>
+                <input asp-for="LocationCode" class="form-control" maxlength="30" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="LocationName" class="form-label">Tên vị trí</label>
+                <input asp-for="LocationName" class="form-control" maxlength="150" />
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label asp-for="Floor" class="form-label">Tầng</label>
+                    <input asp-for="Floor" class="form-control" maxlength="30" />
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label asp-for="Room" class="form-label">Phòng</label>
+                    <input asp-for="Room" class="form-control" maxlength="50" />
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label asp-for="Shelf" class="form-label">Kệ</label>
+                    <input asp-for="Shelf" class="form-control" maxlength="50" />
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label">Mô tả</label>
+                <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+            </div>
+
+            <div class="form-check mb-3">
+                <input asp-for="IsActive" class="form-check-input" />
+                <label asp-for="IsActive" class="form-check-label">Đang sử dụng</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Lưu</button>
+            <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SLib23T1020224.Models.Entities.MemberType>
+
+@{
+    ViewBag.Title = "Danh sách loại độc giả";
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Thêm loại độc giả</a>
+</p>
+
+@if (!Model.Any())
+{
+    <p class="text-muted">Chưa có loại độc giả nào.</p>
+}
+else
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Mã</th>
+                <th>Tên loại độc giả</th>
+                <th>Số sách tối đa</th>
+                <th>Số ngày mượn</th>
+                <th>Số lần gia hạn</th>
+                <th>Trạng thái</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MemberTypeId</td>
+                    <td>@item.TypeName</td>
+                    <td>@item.MaxActiveLoans</td>
+                    <td>@item.LoanPeriodDays</td>
+                    <td>@item.MaxRenewals</td>
+                    <td>@(item.IsActive ? "Đang sử dụng" : "Ngừng sử dụng")</td>
+                    <td class="text-end">
+                        <a asp-action="Details" asp-route-id="@item.MemberTypeId" class="btn btn-sm btn-outline-secondary">Chi tiết</a>
+                        <a asp-action="Edit" asp-route-id="@item.MemberTypeId" class="btn btn-sm btn-outline-primary">Sửa</a>
+                        <a asp-action="Delete" asp-route-id="@item.MemberTypeId" class="btn btn-sm btn-outline-danger">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}

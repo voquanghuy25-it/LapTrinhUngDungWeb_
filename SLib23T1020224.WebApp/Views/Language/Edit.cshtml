@@ -1,0 +1,35 @@
+﻿@model SLib23T1020224.Models.Entities.Language
+
+@{
+    ViewData["Title"] = "Chỉnh sửa ngôn ngữ";
+}
+
+<h1>Chỉnh sửa ngôn ngữ</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <input type="hidden" asp-for="LanguageId" />
+
+            <div class="mb-3">
+                <label asp-for="LanguageCode" class="form-label">Mã ngôn ngữ (ví dụ: vi, en)</label>
+                <input asp-for="LanguageCode" class="form-control" maxlength="10" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="LanguageName" class="form-label">Tên ngôn ngữ</label>
+                <input asp-for="LanguageName" class="form-control" maxlength="100" />
+            </div>
+
+            <div class="form-check mb-3">
+                <input asp-for="IsActive" class="form-check-input" />
+                <label asp-for="IsActive" class="form-check-label">Đang sử dụng</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Lưu</button>
+            <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+        </form>
+    </div>
+</div>

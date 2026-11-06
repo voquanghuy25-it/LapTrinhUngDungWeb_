@@ -1,0 +1,44 @@
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+@model SLib23T1020224.Models.Entities.Category
+
+@{
+    ViewData["Title"] = "Chỉnh sửa thể loại";
+    var parents = ViewBag.ParentCategories as List<SelectListItem> ?? new List<SelectListItem>();
+}
+
+<h1>Chỉnh sửa thể loại</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <input type="hidden" asp-for="CategoryId" />
+
+            <div class="mb-3">
+                <label asp-for="CategoryName" class="form-label">Tên thể loại</label>
+                <input asp-for="CategoryName" class="form-control" maxlength="150" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ParentCategoryId" class="form-label">Thể loại cha</label>
+                <select asp-for="ParentCategoryId" class="form-select" asp-items="parents">
+                    <option value="">-- Không có (thể loại gốc) --</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label">Mô tả</label>
+                <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+            </div>
+
+            <div class="form-check mb-3">
+                <input asp-for="IsActive" class="form-check-input" />
+                <label asp-for="IsActive" class="form-check-label">Đang sử dụng</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Lưu</button>
+            <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+        </form>
+    </div>
+</div>

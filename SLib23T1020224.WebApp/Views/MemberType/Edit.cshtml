@@ -1,0 +1,45 @@
+﻿@model SLib23T1020224.Models.Entities.MemberType
+
+@{
+    ViewData["Title"] = "Chỉnh sửa loại độc giả";
+}
+
+<h1>Chỉnh sửa loại độc giả</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <input type="hidden" asp-for="MemberTypeId" />
+
+            <div class="mb-3">
+                <label asp-for="TypeName" class="form-label">Tên loại độc giả</label>
+                <input asp-for="TypeName" class="form-control" maxlength="100" />
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label asp-for="MaxActiveLoans" class="form-label">Số sách được mượn tối đa</label>
+                    <input asp-for="MaxActiveLoans" type="number" class="form-control" min="0" />
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label asp-for="LoanPeriodDays" class="form-label">Số ngày mượn mỗi lượt</label>
+                    <input asp-for="LoanPeriodDays" type="number" class="form-control" min="1" />
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label asp-for="MaxRenewals" class="form-label">Số lần gia hạn tối đa</label>
+                    <input asp-for="MaxRenewals" type="number" class="form-control" min="0" />
+                </div>
+            </div>
+
+            <div class="form-check mb-3">
+                <input asp-for="IsActive" class="form-check-input" />
+                <label asp-for="IsActive" class="form-check-label">Đang sử dụng</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Lưu</button>
+            <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+        </form>
+    </div>
+</div>

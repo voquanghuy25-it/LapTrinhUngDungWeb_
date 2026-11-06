@@ -1,0 +1,43 @@
+﻿@model SLib23T1020224.Models.Entities.Category
+
+@{
+    ViewData["Title"] = "Xóa thể loại";
+    var inUsed = (bool?)ViewBag.InUsed ?? false;
+}
+
+<h1>Xóa thể loại</h1>
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+@if (inUsed)
+{
+    <div class="alert alert-warning">
+        Thể loại này đang được gắn với sách hoặc là thể loại cha của thể loại khác nên không thể xóa.
+    </div>
+}
+else
+{
+    <p class="lead">Bạn có chắc chắn muốn xóa thể loại này không?</p>
+}
+
+<dl class="row">
+    <dt class="col-sm-3">Mã</dt>
+    <dd class="col-sm-9">@Model.CategoryId</dd>
+
+    <dt class="col-sm-3">Tên thể loại</dt>
+    <dd class="col-sm-9">@Model.CategoryName</dd>
+
+    <dt class="col-sm-3">Thể loại cha</dt>
+    <dd class="col-sm-9">@ViewBag.ParentName</dd>
+
+    <dt class="col-sm-3">Trạng thái</dt>
+    <dd class="col-sm-9">@(Model.IsActive ? "Đang sử dụng" : "Ngừng sử dụng")</dd>
+</dl>
+
+<form asp-action="Delete" asp-route-id="@Model.CategoryId" method="post">
+    @if (!inUsed)
+    {
+        <button type="submit" class="btn btn-danger">Xóa</button>
+    }
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</form>

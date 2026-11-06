@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SLib23T1020224.BusinessLayer\SLib23T1020224.BusinessLayer.csproj" />
+    <ProjectReference Include="..\SLib23T1020224.DataLayer.Interfaces\SLib23T1020224.DataLayer.Interfaces.csproj" />
+    <ProjectReference Include="..\SLib23T1020224.DataLayer.SQLServer\SLib23T1020224.DataLayer.SQLServer.csproj" />
+    <ProjectReference Include="..\SLib23T1020224.Models\SLib23T1020224.Models.csproj" />
+  </ItemGroup>
+
+</Project>

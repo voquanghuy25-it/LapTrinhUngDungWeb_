@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SLib23T1020224.DataLayer.Interfaces\SLib23T1020224.DataLayer.Interfaces.csproj" />
+    <ProjectReference Include="..\SLib23T1020224.Models\SLib23T1020224.Models.csproj" />
+  </ItemGroup>
+
+</Project>

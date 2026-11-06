@@ -1,0 +1,26 @@
+﻿@model SLib23T1020224.Models.Entities.Language
+
+@{
+    ViewData["Title"] = "Chi tiết ngôn ngữ";
+}
+
+<h1>Chi tiết ngôn ngữ</h1>
+
+<dl class="row">
+    <dt class="col-sm-3">Mã</dt>
+    <dd class="col-sm-9">@Model.LanguageId</dd>
+
+    <dt class="col-sm-3">Mã ngôn ngữ (ví dụ: vi, en)</dt>
+    <dd class="col-sm-9">@Model.LanguageCode</dd>
+
+    <dt class="col-sm-3">Tên ngôn ngữ</dt>
+    <dd class="col-sm-9">@Model.LanguageName</dd>
+
+    <dt class="col-sm-3">Trạng thái</dt>
+    <dd class="col-sm-9">@(Model.IsActive ? "Đang sử dụng" : "Ngừng sử dụng")</dd>
+</dl>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.LanguageId" class="btn btn-primary">Sửa</a>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</div>

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SLib23T1020224.Models.Entities.Publisher>
+
+@{
+    ViewBag.Title = "Danh sách nhà xuất bản";
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Thêm nhà xuất bản</a>
+</p>
+
+@if (!Model.Any())
+{
+    <p class="text-muted">Chưa có nhà xuất bản nào.</p>
+}
+else
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Mã</th>
+                <th>Tên nhà xuất bản</th>
+                <th>Điện thoại</th>
+                <th>Email</th>
+                <th>Website</th>
+                <th>Trạng thái</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.PublisherId</td>
+                    <td>@item.PublisherName</td>
+                    <td>@item.Phone</td>
+                    <td>@item.Email</td>
+                    <td>@item.Website</td>
+                    <td>@(item.IsActive ? "Đang sử dụng" : "Ngừng sử dụng")</td>
+                    <td class="text-end">
+                        <a asp-action="Details" asp-route-id="@item.PublisherId" class="btn btn-sm btn-outline-secondary">Chi tiết</a>
+                        <a asp-action="Edit" asp-route-id="@item.PublisherId" class="btn btn-sm btn-outline-primary">Sửa</a>
+                        <a asp-action="Delete" asp-route-id="@item.PublisherId" class="btn btn-sm btn-outline-danger">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}

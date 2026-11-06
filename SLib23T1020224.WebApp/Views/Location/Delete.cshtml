@@ -1,0 +1,52 @@
+﻿@model SLib23T1020224.Models.Entities.Location
+
+@{
+    ViewData["Title"] = "Xóa vị trí lưu trữ";
+    var inUsed = (bool?)ViewBag.InUsed ?? false;
+}
+
+<h1>Xóa vị trí lưu trữ</h1>
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+@if (inUsed)
+{
+    <div class="alert alert-warning">
+        Vị trí này đang có bản sao sách nên không thể xóa.
+    </div>
+}
+else
+{
+    <p class="lead">Bạn có chắc chắn muốn xóa vị trí lưu trữ này không?</p>
+}
+
+<dl class="row">
+    <dt class="col-sm-3">Mã</dt>
+    <dd class="col-sm-9">@Model.LocationId</dd>
+
+    <dt class="col-sm-3">Mã vị trí</dt>
+    <dd class="col-sm-9">@Model.LocationCode</dd>
+
+    <dt class="col-sm-3">Tên vị trí</dt>
+    <dd class="col-sm-9">@Model.LocationName</dd>
+
+    <dt class="col-sm-3">Tầng</dt>
+    <dd class="col-sm-9">@Model.Floor</dd>
+
+    <dt class="col-sm-3">Phòng</dt>
+    <dd class="col-sm-9">@Model.Room</dd>
+
+    <dt class="col-sm-3">Kệ</dt>
+    <dd class="col-sm-9">@Model.Shelf</dd>
+
+    <dt class="col-sm-3">Trạng thái</dt>
+    <dd class="col-sm-9">@(Model.IsActive ? "Đang sử dụng" : "Ngừng sử dụng")</dd>
+</dl>
+
+<form asp-action="Delete" asp-route-id="@Model.LocationId" method="post">
+    @if (!inUsed)
+    {
+        <button type="submit" class="btn btn-danger">Xóa</button>
+    }
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</form>

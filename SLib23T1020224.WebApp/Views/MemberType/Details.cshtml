@@ -1,0 +1,32 @@
+﻿@model SLib23T1020224.Models.Entities.MemberType
+
+@{
+    ViewData["Title"] = "Chi tiết loại độc giả";
+}
+
+<h1>Chi tiết loại độc giả</h1>
+
+<dl class="row">
+    <dt class="col-sm-3">Mã</dt>
+    <dd class="col-sm-9">@Model.MemberTypeId</dd>
+
+    <dt class="col-sm-3">Tên loại độc giả</dt>
+    <dd class="col-sm-9">@Model.TypeName</dd>
+
+    <dt class="col-sm-3">Số sách được mượn tối đa</dt>
+    <dd class="col-sm-9">@Model.MaxActiveLoans</dd>
+
+    <dt class="col-sm-3">Số ngày mượn mỗi lượt</dt>
+    <dd class="col-sm-9">@Model.LoanPeriodDays</dd>
+
+    <dt class="col-sm-3">Số lần gia hạn tối đa</dt>
+    <dd class="col-sm-9">@Model.MaxRenewals</dd>
+
+    <dt class="col-sm-3">Trạng thái</dt>
+    <dd class="col-sm-9">@(Model.IsActive ? "Đang sử dụng" : "Ngừng sử dụng")</dd>
+</dl>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.MemberTypeId" class="btn btn-primary">Sửa</a>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</div>

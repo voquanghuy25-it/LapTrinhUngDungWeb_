@@ -1,0 +1,29 @@
+﻿@model SLib23T1020224.Models.Entities.Category
+
+@{
+    ViewData["Title"] = "Chi tiết thể loại";
+}
+
+<h1>Chi tiết thể loại</h1>
+
+<dl class="row">
+    <dt class="col-sm-3">Mã</dt>
+    <dd class="col-sm-9">@Model.CategoryId</dd>
+
+    <dt class="col-sm-3">Tên thể loại</dt>
+    <dd class="col-sm-9">@Model.CategoryName</dd>
+
+    <dt class="col-sm-3">Thể loại cha</dt>
+    <dd class="col-sm-9">@ViewBag.ParentName</dd>
+
+    <dt class="col-sm-3">Mô tả</dt>
+    <dd class="col-sm-9" style="white-space: pre-line;">@Model.Description</dd>
+
+    <dt class="col-sm-3">Trạng thái</dt>
+    <dd class="col-sm-9">@(Model.IsActive ? "Đang sử dụng" : "Ngừng sử dụng")</dd>
+</dl>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.CategoryId" class="btn btn-primary">Sửa</a>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</div>

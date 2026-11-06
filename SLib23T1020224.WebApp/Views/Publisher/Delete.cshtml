@@ -1,0 +1,55 @@
+﻿@model SLib23T1020224.Models.Entities.Publisher
+
+@{
+    ViewData["Title"] = "Xóa nhà xuất bản";
+    var inUsed = (bool?)ViewBag.InUsed ?? false;
+}
+
+<h1>Xóa nhà xuất bản</h1>
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+@if (inUsed)
+{
+    <div class="alert alert-warning">
+        Nhà xuất bản này đã có sách nên không thể xóa.
+    </div>
+}
+else
+{
+    <p class="lead">Bạn có chắc chắn muốn xóa nhà xuất bản này không?</p>
+}
+
+<dl class="row">
+    <dt class="col-sm-3">Mã</dt>
+    <dd class="col-sm-9">@Model.PublisherId</dd>
+
+    <dt class="col-sm-3">Tên nhà xuất bản</dt>
+    <dd class="col-sm-9">@Model.PublisherName</dd>
+
+    <dt class="col-sm-3">Địa chỉ</dt>
+    <dd class="col-sm-9">@Model.Address</dd>
+
+    <dt class="col-sm-3">Số điện thoại</dt>
+    <dd class="col-sm-9">@Model.Phone</dd>
+
+    <dt class="col-sm-3">Email</dt>
+    <dd class="col-sm-9">@Model.Email</dd>
+
+    <dt class="col-sm-3">Website</dt>
+    <dd class="col-sm-9">@Model.Website</dd>
+
+    <dt class="col-sm-3">Ngày tạo</dt>
+    <dd class="col-sm-9">@Model.CreatedAt.ToString("dd/MM/yyyy HH:mm")</dd>
+
+    <dt class="col-sm-3">Trạng thái</dt>
+    <dd class="col-sm-9">@(Model.IsActive ? "Đang sử dụng" : "Ngừng sử dụng")</dd>
+</dl>
+
+<form asp-action="Delete" asp-route-id="@Model.PublisherId" method="post">
+    @if (!inUsed)
+    {
+        <button type="submit" class="btn btn-danger">Xóa</button>
+    }
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</form>

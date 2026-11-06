@@ -1,0 +1,38 @@
+﻿@model SLib23T1020224.Models.Entities.Publisher
+
+@{
+    ViewData["Title"] = "Chi tiết nhà xuất bản";
+}
+
+<h1>Chi tiết nhà xuất bản</h1>
+
+<dl class="row">
+    <dt class="col-sm-3">Mã</dt>
+    <dd class="col-sm-9">@Model.PublisherId</dd>
+
+    <dt class="col-sm-3">Tên nhà xuất bản</dt>
+    <dd class="col-sm-9">@Model.PublisherName</dd>
+
+    <dt class="col-sm-3">Địa chỉ</dt>
+    <dd class="col-sm-9">@Model.Address</dd>
+
+    <dt class="col-sm-3">Số điện thoại</dt>
+    <dd class="col-sm-9">@Model.Phone</dd>
+
+    <dt class="col-sm-3">Email</dt>
+    <dd class="col-sm-9">@Model.Email</dd>
+
+    <dt class="col-sm-3">Website</dt>
+    <dd class="col-sm-9">@Model.Website</dd>
+
+    <dt class="col-sm-3">Ngày tạo</dt>
+    <dd class="col-sm-9">@Model.CreatedAt.ToString("dd/MM/yyyy HH:mm")</dd>
+
+    <dt class="col-sm-3">Trạng thái</dt>
+    <dd class="col-sm-9">@(Model.IsActive ? "Đang sử dụng" : "Ngừng sử dụng")</dd>
+</dl>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PublisherId" class="btn btn-primary">Sửa</a>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</div>

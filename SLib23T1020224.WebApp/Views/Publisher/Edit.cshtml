@@ -1,0 +1,51 @@
+﻿@model SLib23T1020224.Models.Entities.Publisher
+
+@{
+    ViewData["Title"] = "Chỉnh sửa nhà xuất bản";
+}
+
+<h1>Chỉnh sửa nhà xuất bản</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <input type="hidden" asp-for="PublisherId" />
+
+            <div class="mb-3">
+                <label asp-for="PublisherName" class="form-label">Tên nhà xuất bản</label>
+                <input asp-for="PublisherName" class="form-control" maxlength="200" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Address" class="form-label">Địa chỉ</label>
+                <input asp-for="Address" class="form-control" maxlength="300" />
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Phone" class="form-label">Số điện thoại</label>
+                    <input asp-for="Phone" type="tel" class="form-control" maxlength="20" />
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Email" class="form-label">Email</label>
+                    <input asp-for="Email" type="email" class="form-control" maxlength="254" />
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Website" class="form-label">Website</label>
+                <input asp-for="Website" type="url" class="form-control" maxlength="300" />
+            </div>
+
+            <div class="form-check mb-3">
+                <input asp-for="IsActive" class="form-check-input" />
+                <label asp-for="IsActive" class="form-check-label">Đang sử dụng</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Lưu</button>
+            <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+        </form>
+    </div>
+</div>

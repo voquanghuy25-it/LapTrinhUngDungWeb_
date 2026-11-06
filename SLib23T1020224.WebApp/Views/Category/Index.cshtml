@@ -1,0 +1,46 @@
+﻿@model IEnumerable<SLib23T1020224.Models.Entities.Category>
+
+@{
+    ViewBag.Title = "Danh sách thể loại";
+    var names = ViewBag.CategoryNames as Dictionary<int, string> ?? new Dictionary<int, string>();
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Thêm thể loại</a>
+</p>
+
+@if (!Model.Any())
+{
+    <p class="text-muted">Chưa có thể loại nào.</p>
+}
+else
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Mã</th>
+                <th>Tên thể loại</th>
+                <th>Thể loại cha</th>
+                <th>Trạng thái</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.CategoryId</td>
+                    <td>@item.CategoryName</td>
+                    <td>@(item.ParentCategoryId.HasValue && names.TryGetValue(item.ParentCategoryId.Value, out var parentName) ? parentName : "")</td>
+                    <td>@(item.IsActive ? "Đang sử dụng" : "Ngừng sử dụng")</td>
+                    <td class="text-end">
+                        <a asp-action="Details" asp-route-id="@item.CategoryId" class="btn btn-sm btn-outline-secondary">Chi tiết</a>
+                        <a asp-action="Edit" asp-route-id="@item.CategoryId" class="btn btn-sm btn-outline-primary">Sửa</a>
+                        <a asp-action="Delete" asp-route-id="@item.CategoryId" class="btn btn-sm btn-outline-danger">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}

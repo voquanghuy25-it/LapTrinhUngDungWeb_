@@ -1,0 +1,38 @@
+﻿@model SLib23T1020224.Models.Entities.Location
+
+@{
+    ViewData["Title"] = "Chi tiết vị trí lưu trữ";
+}
+
+<h1>Chi tiết vị trí lưu trữ</h1>
+
+<dl class="row">
+    <dt class="col-sm-3">Mã</dt>
+    <dd class="col-sm-9">@Model.LocationId</dd>
+
+    <dt class="col-sm-3">Mã vị trí</dt>
+    <dd class="col-sm-9">@Model.LocationCode</dd>
+
+    <dt class="col-sm-3">Tên vị trí</dt>
+    <dd class="col-sm-9">@Model.LocationName</dd>
+
+    <dt class="col-sm-3">Tầng</dt>
+    <dd class="col-sm-9">@Model.Floor</dd>
+
+    <dt class="col-sm-3">Phòng</dt>
+    <dd class="col-sm-9">@Model.Room</dd>
+
+    <dt class="col-sm-3">Kệ</dt>
+    <dd class="col-sm-9">@Model.Shelf</dd>
+
+    <dt class="col-sm-3">Mô tả</dt>
+    <dd class="col-sm-9" style="white-space: pre-line;">@Model.Description</dd>
+
+    <dt class="col-sm-3">Trạng thái</dt>
+    <dd class="col-sm-9">@(Model.IsActive ? "Đang sử dụng" : "Ngừng sử dụng")</dd>
+</dl>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.LocationId" class="btn btn-primary">Sửa</a>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</div>

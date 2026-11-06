@@ -1,0 +1,49 @@
+﻿@model SLib23T1020224.Models.Entities.MemberType
+
+@{
+    ViewData["Title"] = "Xóa loại độc giả";
+    var inUsed = (bool?)ViewBag.InUsed ?? false;
+}
+
+<h1>Xóa loại độc giả</h1>
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+@if (inUsed)
+{
+    <div class="alert alert-warning">
+        Loại độc giả này đã có độc giả nên không thể xóa.
+    </div>
+}
+else
+{
+    <p class="lead">Bạn có chắc chắn muốn xóa loại độc giả này không?</p>
+}
+
+<dl class="row">
+    <dt class="col-sm-3">Mã</dt>
+    <dd class="col-sm-9">@Model.MemberTypeId</dd>
+
+    <dt class="col-sm-3">Tên loại độc giả</dt>
+    <dd class="col-sm-9">@Model.TypeName</dd>
+
+    <dt class="col-sm-3">Số sách được mượn tối đa</dt>
+    <dd class="col-sm-9">@Model.MaxActiveLoans</dd>
+
+    <dt class="col-sm-3">Số ngày mượn mỗi lượt</dt>
+    <dd class="col-sm-9">@Model.LoanPeriodDays</dd>
+
+    <dt class="col-sm-3">Số lần gia hạn tối đa</dt>
+    <dd class="col-sm-9">@Model.MaxRenewals</dd>
+
+    <dt class="col-sm-3">Trạng thái</dt>
+    <dd class="col-sm-9">@(Model.IsActive ? "Đang sử dụng" : "Ngừng sử dụng")</dd>
+</dl>
+
+<form asp-action="Delete" asp-route-id="@Model.MemberTypeId" method="post">
+    @if (!inUsed)
+    {
+        <button type="submit" class="btn btn-danger">Xóa</button>
+    }
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</form>
